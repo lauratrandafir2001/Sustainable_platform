@@ -34,3 +34,20 @@ function closeModal() {
     console.log("a intrat aici");
     modal.style.display = "none";
 }
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    
+    // Get the values of username and password inputs
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    
+    // You can now use these variables to perform further actions, such as sending them to a backend server for authentication
+    console.log('Username:', username);
+    console.log('Password:', password);
+    
+    // Clear the form fields after submission (optional)
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+});

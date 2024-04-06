@@ -1,9 +1,9 @@
 
  .background-image-container {
-    background-image: url('./fundal_buuun.jpg'); /* Replace with the path to your image */
+    background-image: url('./fundal_mai_ok.jpg'); /* Replace with the path to your image */
     background-size: cover;
     background-position: center;
-    height: auto; /* or the height you want */
+    height: 100vh; /* or the height you want */
     width: auto; /* or the width you want */
    
   }
@@ -15,9 +15,9 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: 800px; /* Or any other value */
+    width: 500px; /* Or any other value */
     display:grid;
-    place-content: left;
+    place-content: center;
     text-align: center;
     /* Flexbox centering for the content */
  }
@@ -31,7 +31,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 800px; /* Or any other value */
     display:grid;
-    place-content: left;
+    place-content: center;
     text-align: center;
     /* Flexbox centering for the content */
  
@@ -112,6 +112,8 @@
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    place-content: center;
+    text-align: center;
     /* display: block; Ensure modal is displayed */
 }
   .ugly-map {
