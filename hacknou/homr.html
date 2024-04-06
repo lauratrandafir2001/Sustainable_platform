@@ -14,11 +14,17 @@
             <h2>Daily Challenges font-family: 'Reddit Mono'</h2>
             <ul id="challenge-list">
             <!-- Populate with dynamic content if available -->
-            <li><a href="#" class="resource-1-link">Plant a tree</a></li>
+            <div class="resource-1-link">
+                <li><a href="#" class="resource-1">Plant a tree</a>
+                    <p class="challenge-description">Contribute to reforestation and help improve air quality.</p>
+                </li>
+             </div>
+
             <li><a href="#"  class="resource-1-link">Recyle a bottle</a></li>
             <li><a href="#"  class="resource-1-link">Use public transportation today</a></li>
             <!-- More resources -->
             </ul>
+            <button id="myBtn"  onclick="openModal()">Find my coordonates</button>
         </aside>
         
   <!-- Clickable username that triggers the sidebar -->
@@ -26,7 +32,7 @@
 
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-        <span class="username" onclick="closeSidebar()">lauratrandafir2001</span>
+        <span id="username2" class="username" onclick="closeSidebar()">tst</span>
         </div>
         <nav class="sidebar-nav">
         <ul>
@@ -40,10 +46,9 @@
     </aside>
   <script src="./home.js"></script>
 </div>
-    </div>
-    </section> 
-    </div>
-<button id="myBtn"  onclick="openModal()">Open Modal</button>
+
+
+
 <div id="myModal" class="modal">
     <div class="modal-content">
         <head>
@@ -79,9 +84,9 @@
                     map.panTo(latLng);
 
                     // Log the location to the console or display it on the page
-                    console.log(`Latitude: ${latLng.lat()}, Longitude: ${latLng.lng()}`);
+                    console.log(`latitude: ${latLng.lat()}, Longitude: ${latLng.lng()}`);
+                    addListElements(latLng.lat(), latLng.lng());
                     closeModal();
-                    alert(`Latitude: ${latLng.lat()}, Longitude: ${latLng.lng()}`);
                    
                 }
             </script>
@@ -91,12 +96,13 @@
         </body>
     </div>
 </div>
+</div>
 
 </body>
 
 <script>
     
-    window.onload = addListElements;
+    window.onload = addUser;
 
     // addListElement(); // Calling the function when the page loads
 </script>

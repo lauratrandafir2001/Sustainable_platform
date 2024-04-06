@@ -59,15 +59,23 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
 });
 
-
-function addListElements() {
-  // localStorage.removeItem('username');
+//fa functie pt cand se intra pe pagine ca sa pui user
+function addUser() {
   var toggleSidebar_stuff = document.getElementById("username");
+  var toggleSidebar_stuff2 = document.getElementById("username2");
   console.log(localStorage.getItem('username'));
   if (localStorage.getItem('username') === null) {
     window.location.href = "login.html";
   }
-toggleSidebar_stuff.innerHTML = localStorage.getItem('username');
+  toggleSidebar_stuff.innerHTML = localStorage.getItem('username');
+  toggleSidebar_stuff2.innerHTML = localStorage.getItem('username');
+
+}
+// in addlistelements sa fie chemata cand dai click pe modala cu pozitia geografica in loc sa pui alert
+
+function addListElements(latitude, longitude) {
+  // localStorage.removeItem('username');
+
   const jsonData = {
 longitude: 44.2415,
 latitude: 14.9023
@@ -97,6 +105,9 @@ return response.json(); // Parse the JSON response
 // Handle the JSON response data
 console.log('Response received:', data);
 var list = document.getElementById("challenge-list");
+while (list.firstChild) {
+  list.removeChild(list.firstChild);
+}
 for (var i = 0; i < data.length; i++) {
 var item = document.createElement("li");
 var article_inside = document.createElement("a");
