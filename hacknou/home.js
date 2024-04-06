@@ -43,6 +43,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
   event.preventDefault();
   
   // Get the values of username and password inputs
+  localStorage.setItem('username', document.getElementById('username').value);
   username_string = document.getElementById('username').value;
   var password = document.getElementById('password').value;
   
@@ -60,9 +61,13 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
 
 function addListElements() {
+  // localStorage.removeItem('username');
   var toggleSidebar_stuff = document.getElementById("username");
-  console.log(username_string)
-toggleSidebar_stuff.innerHTML = username_string;
+  console.log(localStorage.getItem('username'));
+  if (localStorage.getItem('username') === null) {
+    window.location.href = "login.html";
+  }
+toggleSidebar_stuff.innerHTML = localStorage.getItem('username');
   const jsonData = {
 longitude: 44.2415,
 latitude: 14.9023
