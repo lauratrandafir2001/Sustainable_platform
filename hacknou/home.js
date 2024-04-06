@@ -26,6 +26,7 @@ function openModal() {
     var modal = document.getElementById("myModal");
 
     console.log("open modal");
+    addListElement();
     modal.style.display = "block";
 }
 
