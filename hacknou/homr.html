@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="\\wsl.localhost\Ubuntu\home\laura\hack\hacknou\home.css">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Angular App</title>
+</head>
+<body>
+<div class="container">
+    <div class="background-image-container">
+        <!-- Content goes here -->
+      
+        <aside class="challenges">
+            <h2>Daily Challenges font-family: 'Reddit Mono'</h2>
+            <ul>
+            <!-- Populate with dynamic content if available -->
+            <li><a href="#" class="resource-1-link">Plant a tree</a></li>
+            <li><a href="#"  class="resource-1-link">Recyle a bottle</a></li>
+            <li><a href="#"  class="resource-1-link">Use public transportation today</a></li>
+            <!-- More resources -->
+            </ul>
+        </aside>
+  <!-- Clickable username that triggers the sidebar -->
+  <div class="sidebar-toggle" onclick="toggleSidebar()">lauratrandafir2001</div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+        <span class="username" onclick="closeSidebar()">lauratrandafir2001</span>
+        </div>
+        <nav class="sidebar-nav">
+        <ul>
+            <li><a href="#"><i class="fas fa-user-circle"></i>Your profile</a></li>
+            <li><a href="#"><i class="fas fa-code-branch"></i>Vouchers earned</a></li>
+            <li><a href="#"><i class="fas fa-users"></i>Partner Companies</a></li>
+            <li><a href="#"><i class="fas fa-book"></i>Educational resources</a></li>
+            <!-- Add other sidebar items here -->
+        </ul>
+        </nav>
+    </aside>
+  <script src="./home.js"></script>
+</div>
+    </div>
+    </section> 
+    </div>
+<button id="myBtn"  onclick="openModal()">Open Modal</button>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <head>
+            <title>Click to Get Location with Google Maps</title>
+            <style>
+                /* Style the map */
+                #map {
+                    height: 400px;
+                    width: 100%;
+                }
+            </style>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZkdFQWekX-zhWncrJ3tar8Hwi9RBodcU&callback=initMap" async defer></script>
+            <script>
+                let map;
+
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 8
+                    });
+
+                    // This event listener will call the function when the map is clicked.
+                    map.addListener('click', function(e) {
+                        placeMarkerAndPanTo(e.latLng, map);
+                    });
+                }
+
+                function placeMarkerAndPanTo(latLng, map) {
+                    new google.maps.Marker({
+                        position: latLng,
+                        map: map
+                    });
+                    map.panTo(latLng);
+
+                    // Log the location to the console or display it on the page
+                    console.log(`Latitude: ${latLng.lat()}, Longitude: ${latLng.lng()}`);
+                    closeModal();
+                    alert(`Latitude: ${latLng.lat()}, Longitude: ${latLng.lng()}`);
+                   
+                }
+            </script>
+        </head>
+        <body>
+            <div id="map"></div>
+        </body>
+    </div>
+</div>
+
+</body>
+</html>
