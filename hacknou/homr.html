@@ -20,68 +20,9 @@
             <!-- More resources -->
             </ul>
         </aside>
-        <script>
-            function addListElements() {
-            
-                const jsonData = {
-    longitude: 44.2415,
-    latitude: 14.9023
-};
-
-// Define the URL of your backend API endpoint
-const url = 'http://localhost:8080/challenges/all';
-
-// Define the options for the fetch request
-const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(jsonData) // Convert JSON object to a string
-};
-
-// Send the POST request using fetch
-fetch(url, options)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Parse the JSON response
-    })
-    .then(data => {
-        // Handle the JSON response data
-        console.log('Response received:', data);
-        var list = document.getElementById("challenge-list");
-        for (var i = 0; i < data.length; i++) {
-            var item = document.createElement("li");
-            var article_inside = document.createElement("a");
-            article_inside.href = '#';
-            article_inside.innerHTML = data[i].title;
-            article_inside.className = 'resource-1-link';
-            item.appendChild(article_inside);
-            list.appendChild(item);            
-        }
-    })
-    .catch(error => {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-    });
-
-
-            // var list = document.getElementById("challenge-list");
-            // for (var i = 0; i < 5; i++) {
-            //     var item = document.createElement("li");
-            //     item.innerHTML = "New list item";
-            //     list.appendChild(item);            
-            // }
-
-        }
-            window.onload = addListElements;
-
-            // addListElement(); // Calling the function when the page loads
-        </script>
+        
   <!-- Clickable username that triggers the sidebar -->
-  <div class="sidebar-toggle" onclick="toggleSidebar()">lauratrandafir2001</div>
+  <div id="username" class="sidebar-toggle" onclick="toggleSidebar()"></div>
 
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -152,4 +93,13 @@ fetch(url, options)
 </div>
 
 </body>
+
+<script>
+    
+    window.onload = addListElements;
+
+    // addListElement(); // Calling the function when the page loads
+</script>
+
+
 </html>
