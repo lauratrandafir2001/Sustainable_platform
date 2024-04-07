@@ -87,12 +87,12 @@ function addUser() {
 }
 // in addlistelements sa fie chemata cand dai click pe modala cu pozitia geografica in loc sa pui alert
 
-function addListElements(latitude, longitude) {
+function addListElements(latitude_value, longitude_value) {
   // localStorage.removeItem('username');
 
   const jsonData = {
-longitude: 44.2415,
-latitude: 14.9023
+longitude: longitude_value,
+latitude: latitude_value
 };
 
 // Define the URL of your backend API endpoint
@@ -123,13 +123,36 @@ while (list.firstChild) {
   list.removeChild(list.firstChild);
 }
 for (var i = 0; i < data.length; i++) {
-var item = document.createElement("li");
-var article_inside = document.createElement("a");
-article_inside.href = '#';
-article_inside.innerHTML = data[i].title;
-article_inside.className = 'resource-1-link';
-item.appendChild(article_inside);
-list.appendChild(item);            
+  //aici creez copii noi
+  var item = document.createElement("button");
+  // item.onclick = function() {
+  //   openModal2();
+  // };
+  item.id = 'ceva';
+  item.className = 'resource-1-link';
+
+  var list_item = document.createElement("li");
+
+  var article_inside = document.createElement("a");
+  article_inside.href = '#';
+  article_inside.innerHTML = data[i].title;
+  article_inside.className = 'resource-1';
+
+  var description_inside = document.createElement("p");
+  description_inside.innerHTML = data[i].description;
+  description_inside.className = 'challenge-description';
+
+  var image_inside = document.createElement("img");
+  image_inside.src = './medddddalie.jpg';
+  image_inside.className = 'reward';
+  image_inside.alt = 'Reward';
+
+  list_item.appendChild(article_inside);
+  list_item.appendChild(description_inside);
+  list_item.appendChild(image_inside);
+
+  item.appendChild(list_item);
+  list.appendChild(item);            
 }
 })
 .catch(error => {
