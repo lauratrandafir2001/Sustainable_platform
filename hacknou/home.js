@@ -38,6 +38,20 @@ function closeModal() {
 }
 
 
+function openModal2() {
+  var modal = document.getElementById("myModal");
+
+  console.log("open modal");
+  modal.style.display = "block";
+}
+
+function closeModal2() {
+  var modal = document.getElementById("myModal");
+  console.log("a intrat aici");
+  modal.style.display = "none";
+}
+
+
 document.getElementById('loginForm').addEventListener('submit', function(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
