@@ -10,17 +10,19 @@
 <body>
     <div class="container">
         <div class="background-image-container">
+            <button id="points_button" onclick="window.location.href='./leaderboard.html';">5p</button>
             <!-- Content goes here -->
 
             <aside class="challenges">
                 <h2>Daily Challenges'</h2>
                 <ul id="challenge-list">
                     <!-- Populate with dynamic content if available -->
-                    <button id="ceva" onclick="openModal2()" class="resource-1-link">
+                    <button data-index='1' id="ceva" onclick="openModal2(this)" class="resource-1-link">
                         <li><a href="#" class="resource-1">Plant a tree</a>
                             <p class="challenge-description">Contribute to reforestation and help improve air quality.
                             </p>
                             <img src="./medddddalie.jpg" alt="Reward" class="reward">
+                            <p id="aici_puncte">5 points X 1</p>
                         </li>
                     </button>
         </div>
@@ -53,7 +55,7 @@
 
 
     <div id="myModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content5">
 
             <head>
                 <title>Click to Get Location with Google Maps</title>
@@ -72,8 +74,8 @@
 
                     function initMap() {
                         map = new google.maps.Map(document.getElementById('map'), {
-                            center: { lat: -34.397, lng: 150.644 },
-                            zoom: 8
+                            center: { lat: 45.04, lng: 25.10 },
+                            zoom: 6
                         });
 
                         // This event listener will call the function when the map is clicked.
@@ -111,38 +113,63 @@
                 <title>Do you have a team?</title>
                 <style>
                     /* Style the map */
-                    #map {
-                        height: 400px;
-                        width: 100%;
-                    }
                 </style>
                 <script>
 
                 </script>
-            </head>
+                <body>
+                    <div class="container-modala">
 
-            <body>
-                <div id="map"></div>
-            </body>
+                        <h1>Do you have a team?</h1>
+                        <button id="yes" onclick="openModal3()">Yes</button>
+                        <button id="no">No</button>
+                    </div>
+                </body>
+            </head>
         </div>
     </div>
+
+
+
+
+
+    <div id="mythirdModal" class="modal3">
+        <div class="modal-content2">
+
+            <head>
+                <title>Do you have a team?</title>
+                <style>
+                    /* Style the map */
+                </style>
+                <script>
+
+                </script>
+                <body>
+                    <div class="container-modala2">
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <input type="file" id="imageInput" name="image" accept="image/*">
+                            <button type="submit" onclick="addPointsToUser(),closeModal2()">Upload Image</button>
+                        </form>
+            
+                    </div>
+                </body>
+            </head>
+        </div>
+    </div>
+
+
+
 
     </div>
 
 </body>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Modal Header</h2>
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
-    </div>
-</div>
+
 
 <script>
 
-    window.onload = addUser;
+    window.onload = function() 
+    {addUser(), getUserPoints()};
 
     // addListElement(); // Calling the function when the page loads
 </script>

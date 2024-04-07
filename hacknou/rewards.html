@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="home.css">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Angular App</title>
+</head>
+<body>
+<div class="container">
+    <div class="background-image-container">
+        <!-- Content goes here -->
+      
+        <aside class="challenges">
+            <h2>Rewards font-family: 'Reddit Mono'</h2>
+            <ul id="rewards-list">
+            <!-- Populate with dynamic content if available -->
+            <div class="resource-1-link">
+                <li><a href="#" class="resource-1">Plant a tree</a>
+                    <p class="challenge-description">Contribute to reforestation and help improve air quality.</p>
+                </li>
+             </div>
+
+            <li><a href="#"  class="resource-1-link">Recyle a bottle</a></li>
+            <li><a href="#"  class="resource-1-link">Use public transportation today</a></li>
+            <!-- More resources -->
+            </ul>
+        </aside>
+        
+  <!-- Clickable username that triggers the sidebar -->
+  <div id="username" class="sidebar-toggle" onclick="toggleSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+        <span id="username2" class="username" onclick="closeSidebar()">tst</span>
+        </div>
+        <nav class="sidebar-nav">
+        <ul>
+            <li><a href="#"><i class="fas fa-user-circle"></i>Your profile</a></li>
+            <li><a href="#"><i class="fas fa-code-branch"></i>Vouchers earned</a></li>
+            <li><a href="#"><i class="fas fa-users"></i>Partner Companies</a></li>
+            <li><a href="#"><i class="fas fa-book"></i>Educational resources</a></li>
+            <!-- Add other sidebar items here -->
+        </ul>
+        </nav>
+    </aside>
+  <script src="./home.js"></script>
+</div>
+
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+
+    </div>
+</div>
+</div>
+
+</body>
+
+<script>
+    
+    window.onload = function () {
+        addUser();
+        addRewards();
+    }
+
+    // addListElement(); // Calling the function when the page loads
+</script>
+
+
+</html>

@@ -38,15 +38,29 @@ function closeModal() {
 }
 
 
-function openModal2() {
+function openModal2(element) {
   var modal = document.getElementById("mysecondModal");
-
-  console.log("open modal");
+  localStorage.setItem('points', element.getAttribute('data-index-points') * element.getAttribute('data-index-multiplier'));
+  console.log(element.getAttribute('data-index-points') + " " + element.getAttribute('data-index-multiplier'));
+  console.log("open modal2");
   modal.style.display = "block";
 }
 
 function closeModal2() {
   var modal = document.getElementById("mysecondModal");
+  console.log("a intrat aici");
+  modal.style.display = "none";
+}
+
+function openModal3() {
+  var modal = document.getElementById("mythirdModal");
+
+  console.log("open modal3");
+  modal.style.display = "block";
+}
+
+function closeModal3() {
+  var modal = document.getElementById("mythirdModal");
   console.log("a intrat aici");
   modal.style.display = "none";
 }
@@ -130,6 +144,12 @@ function addListElements(latitude_value, longitude_value) {
         // };
         item.id = 'ceva';
         item.className = 'resource-1-link';
+        item.setAttribute("data-index-points", data[i].points);
+        item.setAttribute("data-index-multiplier", data[i].scoreMultipler);
+
+        item.onclick = function() {
+          openModal2(this);
+        };
 
         var list_item = document.createElement("li");
 
@@ -147,9 +167,14 @@ function addListElements(latitude_value, longitude_value) {
         image_inside.className = 'reward';
         image_inside.alt = 'Reward';
 
+        var points_element = document.createElement("p");
+        points_element.id = 'aici_puncte'
+        points_element.innerHTML = data[i].points + " points X " + Math.floor(data[i].scoreMultipler * 100) / 100;
+
         list_item.appendChild(article_inside);
         list_item.appendChild(description_inside);
         list_item.appendChild(image_inside);
+        list_item.appendChild(points_element);
 
         item.appendChild(list_item);
         list.appendChild(item);
@@ -168,4 +193,82 @@ function addListElements(latitude_value, longitude_value) {
   //     list.appendChild(item);            
   // }
 
+}
+
+
+function getUserPoints() {
+  // Define the URL of your backend API endpoint
+  const url = 'http://localhost:8080/user/getUser';
+
+
+  const jsonData = {
+    userId: localStorage.getItem('username'),
+    password: "mocked"
+  };
+
+
+  // Send the GET request using fetch
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(jsonData) // Convert JSON object to a string
+  };
+
+  fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse the JSON response
+    })
+    .then(data => {
+      // Handle the JSON response data
+      console.log('Response received:', data);
+      var points = document.getElementById("points_button");
+      points.innerHTML = data.points;
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+
+function addPointsToUser() {
+  // Define the URL of your backend API endpoint
+  const url = 'http://localhost:8080/user/addPointsToUser';
+  console.log("adaug puncte")
+
+  const jsonData = {
+    userId: localStorage.getItem('username'),
+    points: Math.round(parseFloat(localStorage.getItem('points')))
+  };
+
+
+  // Send the GET request using fetch
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(jsonData) // Convert JSON object to a string
+  };
+
+  fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse the JSON response
+    })
+    .then(data => {
+      // Handle the JSON response data
+      console.log('Response received:', data);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('There was a problem with the fetch operation:', error);
+    });
 }
